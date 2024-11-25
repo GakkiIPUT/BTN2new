@@ -327,7 +327,7 @@ public class GameSystem : MonoBehaviour
     {
         if (isInputDisabled) return;
         HandlePlayerInput();
-        if (Input.GetMouseButtonUp(1)){ DeselectBoardPieces();}
+        if (Input.GetMouseButtonUp(1)){ DeselectBoardPieces();capturedPieceManager.DeselectPiece(); absorptionPieceManager.AbsorDeselectPiece(); }
         if (isGameActive){ TotalElapsedTime += Time.deltaTime;}
     }
 
@@ -907,12 +907,29 @@ public class GameSystem : MonoBehaviour
 
     public void ClearCursors()
     {
+        Debug.Log("a");
         foreach (var cursor in cursors) Destroy(cursor);
         cursors.Clear();
         foreach (var absorcursor in absorptioncursors) Destroy(absorcursor);
         absorptioncursors.Clear();
         foreach (var relesecursor in relesecursors) Destroy(relesecursor);  
         relesecursors.Clear();
+        DestroyObjectsByName("Mark");
+        DestroyObjectsByName("AbsorptionMark");
+        DestroyObjectsByName("ReleseMark");
+    }
+
+    // 名前でオブジェクトを削除するユーティリティメソッド
+    private void DestroyObjectsByName(string name)
+    {
+        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
+        foreach (var obj in objects)
+        {
+            if (obj.name == name)
+            {
+                Destroy(obj);
+            }
+        }
     }
     //-------カーソル処理終わり--------
 

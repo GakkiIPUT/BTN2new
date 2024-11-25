@@ -46,6 +46,9 @@ public class PromoteManager : MonoBehaviour
     //--------成り処理開始-----------
     public void ShowPromoteOptions(UnitController unit, int currentPlayer)// 成りオプションを表示する
     {
+        gameSystem.ClearCursors();
+        Debug.Log("a");
+
         selectedUnit = unit;  // 成り対象の駒を記録
         if (currentPlayer == 0) // プレイヤー1の場合
         {
@@ -57,6 +60,8 @@ public class PromoteManager : MonoBehaviour
         }
         UnityEngine.Time.timeScale = 0; //ゲームの時間を停止
         gameSystem.DisableInput();// 入力を無効にする
+        gameSystem.ClearCursors();
+        Debug.Log("b");
     }
 
     // 成り/成らないボタンが押された時の処理
