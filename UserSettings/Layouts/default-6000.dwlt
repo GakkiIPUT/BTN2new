@@ -119,7 +119,11 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
+<<<<<<< HEAD
   controlID: 23177
+=======
+  controlID: 119
+>>>>>>> master
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -145,7 +149,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
+<<<<<<< HEAD
   controlID: 23178
+=======
+  controlID: 46
+>>>>>>> master
   draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
@@ -171,7 +179,11 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
+<<<<<<< HEAD
   controlID: 23179
+=======
+  controlID: 47
+>>>>>>> master
   draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
@@ -236,6 +248,36 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+<<<<<<< HEAD
+=======
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: GameView
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 386.4
+    y: 0
+    width: 800
+    height: 460
+  m_MinSize: {x: 50, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 13}
+  m_Panes:
+  - {fileID: 13}
+  - {fileID: 17}
+  m_Selected: 0
+  m_LastSelected: 1
+--- !u!114 &11
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+>>>>>>> master
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: ConsoleWindow
@@ -273,11 +315,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1482
     y: 0
+<<<<<<< HEAD
     width: 438
     height: 933
   m_MinSize: {x: 276, y: 76}
   m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 20}
+=======
+    width: 349.59998
+    height: 716.8
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
+  m_ActualView: {fileID: 21}
+>>>>>>> master
   m_Panes:
   - {fileID: 20}
   - {fileID: 21}
@@ -424,7 +474,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: 5cc4f4ff622effffca46ffff4af60000a8f60000ccf60000f4f6000004f7000038f7000050f7000080f70000daf7000006f8000036f8000060f80000e2f8000018f900001cf900002ef90000c6f9000064fa000076fa00007afa00007efa0000acfb0000c6fb00002efc000030fc0000
+=======
+      m_ExpandedIDs: a013fbff881affff7641ffffbe46fffff0f5000002f6000014f600004ef6000052f600006ef60000baf60000c4f6000002f7000012f7000046f700004af7000086f700008af70000cef70000e4f70000f4f7000032f800003cf8000056f800008af80000a6f80000dcf800000af9000014f9000020f9000024f900006cf900007ef900009ef90000b8f90000c4f9000012fa000028fa000036fa000048fa000064fa000076fa00007afa00007efa000092fa0000d6fa000040fb00004efb000050fb00007efb0000d8fb0000e4fb0000f2fb000004fc00005afc000062fc000064fc000080fc000076450100884501009a450100ac450100c8450100d2450100e4450100204601002a46010084460100
+>>>>>>> master
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1221,9 +1275,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 677
     width: 1481
     height: 309
+=======
+    y: 539.2
+    width: 1185.4
+    height: 230.79999
+>>>>>>> master
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1246,7 +1306,11 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< HEAD
     - Assets/Script
+=======
+    - Assets/Scenes/Transition
+>>>>>>> master
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1256,6 +1320,7 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 77
   m_LastFolders:
+<<<<<<< HEAD
   - Assets/Script
   m_LastFoldersGridSize: 77
   m_LastProjectPath: "C:\\Users\\rio-2\\Desktop\\\u6388\u696D\\BTN2New"
@@ -1266,6 +1331,18 @@ MonoBehaviour:
     m_SelectedIDs: 6cf50000
     m_LastClickedID: 62828
     m_ExpandedIDs: 000000001eb5000020b50000
+=======
+  - Assets/Scenes/Transition
+  m_LastFoldersGridSize: 77
+  m_LastProjectPath: C:\Git\BTN2_new
+  m_LockTracker:
+    m_IsLocked: 0
+  m_FolderTreeState:
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: a6f50000
+    m_LastClickedID: 62886
+    m_ExpandedIDs: 0000000062f5000070f5000000ca9a3b
+>>>>>>> master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1294,7 +1371,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 000000001eb5000020b50000
+=======
+    m_ExpandedIDs: 
+>>>>>>> master
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1468,7 +1549,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 261
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

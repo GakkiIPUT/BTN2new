@@ -6,6 +6,8 @@ using System.Collections;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
+using System.Threading;
+
 public class GameSystem : MonoBehaviour
 {
     //-------ゲーム設定開始--------
@@ -436,7 +438,7 @@ public class GameSystem : MonoBehaviour
             movableUnit(selectUnit, movableTiles[tile]);
             GetComponent<AudioSource>().Play();
             selectedReleaseUnit = null;
-            EndTurn();
+            //EndTurn();
         }
         // 盤面のタイルが選択されたか、持ち駒が選択されているか確認
         if (tile != null && capturedPieceManager.GetSelectedPieceType() != UnitType.None)
@@ -484,7 +486,7 @@ public class GameSystem : MonoBehaviour
 
             // 選択状態解除
             selectedReleaseUnit = null;
-            EndTurn();
+            //EndTurn();
         }
         // ユニットを選択
         if (null != unit)
@@ -562,7 +564,7 @@ public class GameSystem : MonoBehaviour
             return;// 成りボタンが表示されているのでターンは切り替えない
         }
         //oute(unit, tileindex);
-        //EndTurn();
+        EndTurn();
         StartCoroutine(ClearCursorsWithDelay(0.01f));
     }
 
@@ -726,6 +728,7 @@ public class GameSystem : MonoBehaviour
 
     void selectCursors(UnitController unit = null)
     {
+        Debug.Log("カーソル選択");
         // 既存のカーソルを削除
         ClearCursors();
 
@@ -741,6 +744,7 @@ public class GameSystem : MonoBehaviour
         }
         // ユニットが存在しない場合は終了
         if (unit == null) return;
+        Debug.Log("カーソル選択");
 
         // 自分のターンかどうかの確認
         // 自分のターンでない場合、自分のユニットを選択できないようにする
@@ -905,32 +909,45 @@ public class GameSystem : MonoBehaviour
         EndTurn();
     }
 
+    //public void ClearCursors()
+    //{
+    //    Debug.Log("a");
+    //    GameObject[] taggedCursors = GameObject.FindGameObjectsWithTag("cursor");
+    //    foreach (var taggedCursor in taggedCursors)
+    //    {
+    //        Destroy(taggedCursor);
+    //    }
+    //    foreach (var cursor in cursors) Destroy(cursor);
+    //    cursors.Clear();
+    //    foreach (var absorcursor in absorptioncursors) Destroy(absorcursor);
+    //    absorptioncursors.Clear();
+    //    foreach (var relesecursor in relesecursors) Destroy(relesecursor);  
+    //    relesecursors.Clear();
+    //}
     public void ClearCursors()
     {
-        Debug.Log("a");
-        foreach (var cursor in cursors) Destroy(cursor);
+        // cursors リスト内のオブジェクトを削除
+        foreach (var cursor in cursors)
+        {
+            if (cursor != null) Destroy(cursor);
+        }
         cursors.Clear();
-        foreach (var absorcursor in absorptioncursors) Destroy(absorcursor);
+
+        // absorptioncursors リスト内のオブジェクトを削除
+        foreach (var absorcursor in absorptioncursors)
+        {
+            if (absorcursor != null) Destroy(absorcursor);
+        }
         absorptioncursors.Clear();
-        foreach (var relesecursor in relesecursors) Destroy(relesecursor);  
+
+        // relesecursors リスト内のオブジェクトを削除
+        foreach (var relesecursor in relesecursors)
+        {
+            if (relesecursor != null) Destroy(relesecursor);
+        }
         relesecursors.Clear();
-        DestroyObjectsByName("Mark");
-        DestroyObjectsByName("AbsorptionMark");
-        DestroyObjectsByName("ReleseMark");
     }
 
-    // 名前でオブジェクトを削除するユーティリティメソッド
-    private void DestroyObjectsByName(string name)
-    {
-        GameObject[] objects = GameObject.FindObjectsOfType<GameObject>();
-        foreach (var obj in objects)
-        {
-            if (obj.name == name)
-            {
-                Destroy(obj);
-            }
-        }
-    }
     //-------カーソル処理終わり--------
 
     //-------タイルリセット処理開始--------
@@ -1474,14 +1491,12 @@ public class GameSystem : MonoBehaviour
     }
     public void EndTurn()
     {
-        Debug.Log("a");
+
         ClearCursors();
         foreach (var unit in units)
         {
             if (unit != null && unit.Player == currentPlayer && IsKing(unit)) 
             {
-                Debug.Log("aa");
-
                 oute(selectUnit, unit.Pos); // 王手判定を行う
             }
         }
@@ -1509,6 +1524,7 @@ public class GameSystem : MonoBehaviour
             return;
         }
         currentPlayer = 1 - currentPlayer;
+        Debug.Log(selectUnit);
         ResetTileStates();
         if (promoteManager != null) { promoteManager.HidePromoteOptions(currentPlayer); }
         capturedPieceManager.ClearSelectedPiece();
@@ -1516,7 +1532,6 @@ public class GameSystem : MonoBehaviour
         DeselectBoardPieces();
         Debug.Log($"プレイヤー{currentPlayer + 1}のターンです。");
         gametime.ResetBattleTime();
-        ClearCursors();
         // プレイヤーのターンが切り替わる際にタイマーも切り替え
         FindAnyObjectByType<GameTime>().StopBattleTime(currentPlayer);
         CheckForCheckAfterMove();
@@ -1531,7 +1546,7 @@ public class GameSystem : MonoBehaviour
         skipActivateText = false; // フラグをリセットして次ターンで再び動作可能に
         startOuteNextTurnDisabled = false; // 次のターンでは再度使用できるようにリセット
         Turn += 1;
-        
+        DeselectBoardPieces();
     }
     //-------ターンの終了処理終わり--------
 
