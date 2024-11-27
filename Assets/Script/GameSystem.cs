@@ -528,7 +528,7 @@ public class GameSystem : MonoBehaviour
                 unit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 targetUnit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 absorptionHistory.Remove(targetUnit);
-                EndTurn();
+                //EndTurn();
                 return;  // 駒取りをスキップ
             }
             AddCapturedUnit(targetUnit.UnitType);
@@ -596,6 +596,7 @@ public class GameSystem : MonoBehaviour
                     }
                 }
                 unit.ReleseCheck = true;
+                absorUnit.ReleseCheck = true;
                 unit.absorptionCheck = true;
                 ReleaseEffect(absorUnit);
                 unit.GetComponent<MeshRenderer>().material = BaseMaterial;
@@ -1733,7 +1734,7 @@ public class GameSystem : MonoBehaviour
             UnitController unitController = absorptionHistory[i].gameObject.GetComponent<UnitController>();
             if (unitController.fillingCheck && !unitController.ReleseCheck)
             {
-                if (Turn >= unitController.absorTurn + 2)
+                if (Turn >= unitController.absorTurn + 1)
                 {
                     unitController.fillingCheck = true;
                     if (absorptionHistory[i].gameObject.transform.childCount > 1)
