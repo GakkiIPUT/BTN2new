@@ -532,12 +532,9 @@ public class GameSystem : MonoBehaviour
                 unit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 targetUnit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 absorptionHistory.Remove(targetUnit);
-<<<<<<< HEAD
                 StartCoroutine(ClearCursorsWithDelay(unit, tileindex));
                 EndTurn();
-=======
-                //EndTurn();
->>>>>>> master
+
                 return;  // 駒取りをスキップ
             }
             AddCapturedUnit(targetUnit.UnitType);
@@ -612,7 +609,6 @@ public class GameSystem : MonoBehaviour
                 absorUnit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 absorptionHistory.Remove(absorUnit);
                 StartCoroutine(AbsorptionDelay(unit, tileindex));
-                EndTurn();
                 return;
             }
             Destroy(absorUnit.gameObject, 0.7f);
