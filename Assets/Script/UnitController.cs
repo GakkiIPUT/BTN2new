@@ -700,7 +700,7 @@ public class UnitController : MonoBehaviour
     public void FillingCheck(UnitController unit)
     {
         // ‹zû‚³‚ê‚½‹î‚Ìî•ñ‚ğŠm”F‚µA[“Uˆ—‚ğs‚¤
-        if (unit.absorptionCheck && gameSystem.Turn >= unit.absorTurn +2)//[“U–³‚µ‚Í‚O‚É‚·‚é
+        if (unit.absorptionCheck && gameSystem.Turn >= unit.absorTurn + 1)//[“U–³‚µ‚Í‚O‚É‚·‚é
         {
             unit.fillingCheck = true;       // ’Êí‚Ì[“UŠ®—¹ó‘Ô
         }

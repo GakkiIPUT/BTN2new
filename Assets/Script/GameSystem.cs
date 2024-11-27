@@ -475,13 +475,13 @@ public class GameSystem : MonoBehaviour
 
             if (selectedReleaseUnit.AbsorUnitType != UnitType.None)
             {
-                if (selectedReleaseUnit.AbsorUnitPlayer == currentPlayer)
+                if (selectedReleaseUnit.AbsorUnitPlayer != currentPlayer)
                 {
-                    absorptionPieceManager.AddAbsorptionPiece(selectedReleaseUnit.AbsorUnitType, currentPlayer);
+                    absorptionPieceManager.AddAbsorptionPiece(selectedReleaseUnit.AbsorUnitType, 1-currentPlayer);
                 }
                 else
                 {
-                    capturedPieceManager.AddCapturedPiece(selectedReleaseUnit.AbsorUnitType, currentPlayer);
+                    capturedPieceManager.AddCapturedPiece(selectedReleaseUnit.AbsorUnitType, 1-currentPlayer);
                 }
             }
             selectedReleaseUnit.AbsorUnitType = UnitType.None;
@@ -532,6 +532,7 @@ public class GameSystem : MonoBehaviour
                 unit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 targetUnit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 absorptionHistory.Remove(targetUnit);
+                StartCoroutine(ClearCursorsWithDelay(unit, tileindex));
                 EndTurn();
                 return;  // 駒取りをスキップ
             }
@@ -568,8 +569,8 @@ public class GameSystem : MonoBehaviour
             return;// 成りボタンが表示されているのでターンは切り替えない
         }
         //oute(unit, tileindex);
+        StartCoroutine(ClearCursorsWithDelay(unit, tileindex));
         EndTurn();
-        StartCoroutine(ClearCursorsWithDelay(0.01f));
     }
 
     void absorbableUnit(UnitController unit, Vector2Int tileindex)
@@ -605,6 +606,7 @@ public class GameSystem : MonoBehaviour
                 unit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 absorUnit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 absorptionHistory.Remove(absorUnit);
+                StartCoroutine(AbsorptionDelay(unit, tileindex));
                 EndTurn();
                 return;
             }
@@ -897,10 +899,10 @@ public class GameSystem : MonoBehaviour
     }
 
     // カーソルをクリアするコルーチン
-    private IEnumerator ClearCursorsWithDelay(float delay)
+    private IEnumerator ClearCursorsWithDelay(UnitController unit, Vector2Int tileindex)
     {
-        yield return new WaitForSeconds(delay);  // 指定した秒数待つ
-        ClearCursors();  // カーソルをクリア
+        yield return new WaitForSeconds(0.01f);
+        DeselectBoardPieces();
     }
     //吸収のカーソルをクリアするコルーチン
     IEnumerator AbsorptionDelay(UnitController unit, Vector2Int tileindex)
@@ -1738,7 +1740,7 @@ public class GameSystem : MonoBehaviour
             UnitController unitController = absorptionHistory[i].gameObject.GetComponent<UnitController>();
             if (unitController.fillingCheck && !unitController.ReleseCheck)
             {
-                if (Turn >= unitController.absorTurn + 2)
+                if (Turn >= unitController.absorTurn + 1)
                 {
                     unitController.fillingCheck = true;
                     if (absorptionHistory[i].gameObject.transform.childCount > 1)
