@@ -6,7 +6,6 @@ using System.Collections;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
-using System.Threading;
 
 public class GameSystem : MonoBehaviour
 {
@@ -339,7 +338,10 @@ public class GameSystem : MonoBehaviour
         {
             Vector3 mousePos = Input.mousePosition;
             Ray ray = (currentPlayer == 0 ? player1Camera : player2Camera).ScreenPointToRay(mousePos);
-            HandleRaycast(ray);
+            if (!isInputDisabled)
+            {
+                HandleRaycast(ray);
+            }
         }
     }
 
@@ -511,6 +513,8 @@ public class GameSystem : MonoBehaviour
             if (targetUnit.hasTemporaryDefense && targetUnit.fillingCheck)
             {
                 targetUnit.hasTemporaryDefense = false;  // 防御効果を消費
+                DisableInput();
+                Invoke("EnableInput", 0.2f);
                 Debug.Log($"{targetUnit.UnitType} の防御効果が発動し、攻撃が無効化されました！");
                 if (targetUnit.AbsorUnitType != UnitType.None)
                 {
@@ -829,7 +833,7 @@ public class GameSystem : MonoBehaviour
         // 選択状態にする
         unit.Selected();
         selectUnit = unit;
-
+        Debug.Log(selectUnit);
         //王手チェック
         outecheck(unit);
     }
@@ -1491,7 +1495,7 @@ public class GameSystem : MonoBehaviour
     }
     public void EndTurn()
     {
-
+        DisableInput();
         ClearCursors();
         foreach (var unit in units)
         {
@@ -1547,6 +1551,7 @@ public class GameSystem : MonoBehaviour
         startOuteNextTurnDisabled = false; // 次のターンでは再度使用できるようにリセット
         Turn += 1;
         DeselectBoardPieces();
+        EnableInput();
     }
     //-------ターンの終了処理終わり--------
 
