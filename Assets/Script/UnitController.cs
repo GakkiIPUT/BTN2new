@@ -170,10 +170,10 @@ public class UnitController : MonoBehaviour
             newUnitController.hasTemporaryDefense = this.hasTemporaryDefense;
             newUnitController.absorptionCheck = true;
             newUnitController.AbsorUnitType = this.AbsorUnitType;
-            gameSystem.absorptionHistory.Remove(this);
-            gameSystem.absorptionHistory.Add(newUnitController);
             if (!this.ReleseCheck)
             {
+                gameSystem.absorptionHistory.Remove(this);
+                gameSystem.absorptionHistory.Add(newUnitController);
                 this.gameObject.transform.GetChild(1).parent = newUnit.transform;
             }
         }
