@@ -84,11 +84,11 @@ public class PromoteManager : MonoBehaviour
                 //gameTime.ResetBattleTime();         // 時間をリセット
                 gameSystem.EnableInput();  // 入力を再度有効にする
                 gameSystem.StartOuteNextTurn();
-                if (!gameSystem.skipActivateText)
-                {
-                    gameSystem.ActivateText();
-                }
-                gameSystem.skipActivateText = false; // フラグをリセットして次ターンで再び動作可能に
+                //if (!gameSystem.skipActivateText)
+                //{
+                //    gameSystem.ActivateText();
+                //}
+                //gameSystem.skipActivateText = false; // フラグをリセットして次ターンで再び動作可能に
                 gameSystem.DeselectBoardPieces();
                 Debug.Log("c");
                 gameSystem.EndTurn();  // ターンを切り替える

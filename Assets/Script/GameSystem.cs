@@ -1131,17 +1131,10 @@ public class GameSystem : MonoBehaviour
     //王手された時の王の座標 Player0KingPos Player1KingPos
     public void oute(UnitController unit, Vector2Int tileindex)
     {
-        if (unit == null)
-        {
-            Debug.LogError("Unit is null in oute method.");
-            return;
-        }
+        if (unit == null) { return; }
 
-        if (tileindex == null)
-        {
-            Debug.LogError("Tile index is null in oute method.");
-            return;
-        }
+        if (tileindex == null) { return; }
+
         // 駒の移動範囲を取得。充填が完了している場合のみ放出マスを含める
         List<Vector2Int> outeTiles = unit.fillingCheck ? getMovableTilesWithRelease(unit) : getMovableTiles(unit);
 
@@ -1535,13 +1528,10 @@ public class GameSystem : MonoBehaviour
         // プレイヤーのターンが切り替わる際にタイマーも切り替え
         FindAnyObjectByType<GameTime>().StopBattleTime(currentPlayer);
         CheckForCheckAfterMove();
-        if (!startOuteNextTurnDisabled) //成り判定が行われた時、使えないようにする
+        StartOuteNextTurn();
+        if (!skipActivateText)
         {
-            StartOuteNextTurn();
-            if (!skipActivateText)
-            {
-                ActivateText();
-            }
+            ActivateText();
         }
         skipActivateText = false; // フラグをリセットして次ターンで再び動作可能に
         startOuteNextTurnDisabled = false; // 次のターンでは再度使用できるようにリセット
