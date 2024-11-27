@@ -526,7 +526,7 @@ public class GameSystem : MonoBehaviour
                 unit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 targetUnit.GetComponent<MeshRenderer>().material = BaseMaterial;
                 absorptionHistory.Remove(targetUnit);
-                EndTurn();
+                //EndTurn();
                 return;  // 駒取りをスキップ
             }
             AddCapturedUnit(targetUnit.UnitType);

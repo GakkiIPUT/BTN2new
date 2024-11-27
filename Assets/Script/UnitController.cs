@@ -191,6 +191,7 @@ public class UnitController : MonoBehaviour
 
         gameSystem.UpdateUnitPosition(newUnitController);// GameSystem‚ÉÄ“o˜^
 
+        Debug.Log(this.gameObject + "@111");
         Destroy(this.gameObject);// Œ³‚Ì‹î‚ğíœ
     }
     //--------‹î¬‚èˆ—I‚í‚è----------
