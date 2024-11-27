@@ -90,10 +90,12 @@ public class PromoteManager : MonoBehaviour
                 }
                 gameSystem.skipActivateText = false; // フラグをリセットして次ターンで再び動作可能に
                 gameSystem.DeselectBoardPieces();
-                //gameSystem.EndTurn();  // ターンを切り替える
+                Debug.Log("c");
+                gameSystem.EndTurn();  // ターンを切り替える
             }
         }
     }
+
     public void HidePromoteOptions(int currentPlayer)
     {
         if (currentPlayer == 0)
